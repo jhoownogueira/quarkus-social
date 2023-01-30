@@ -3,6 +3,7 @@ package jhoownogueira.quarkussocial.rest;
 import jhoownogueira.quarkussocial.domain.model.User;
 import jhoownogueira.quarkussocial.rest.dto.CreateUserRequest;
 
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.Response;
 public class UserResource {
 
     @POST
+    @Transactional
     public Response createUser( CreateUserRequest userRequest ) {
 
         User user = new User();
