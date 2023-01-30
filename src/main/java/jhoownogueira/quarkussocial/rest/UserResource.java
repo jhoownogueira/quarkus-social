@@ -1,5 +1,6 @@
 package jhoownogueira.quarkussocial.rest;
 
+import jhoownogueira.quarkussocial.domain.model.User;
 import jhoownogueira.quarkussocial.rest.dto.CreateUserRequest;
 
 import javax.ws.rs.*;
@@ -13,7 +14,14 @@ public class UserResource {
 
     @POST
     public Response createUser( CreateUserRequest userRequest ) {
-        return Response.ok(userRequest).build();
+
+        User user = new User();
+        user.setAge(userRequest.getAge());
+        user.setName(userRequest.getName());
+
+        user.persist();
+
+        return Response.ok(user).build();
     }
 
     @GET
